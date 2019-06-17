@@ -13,6 +13,8 @@ What you need
 
 ```
 Linux OS (CentOS, Ubuntu)
+Java JDK 1.8 
+Maven Command Line
 ```
 
 ## Running the application (standalone)
@@ -20,15 +22,12 @@ Linux OS (CentOS, Ubuntu)
 Once cloned the repo you can run it doing these steps:
 ```
 * Compile maven project by command mvn clean install
-* Launching executable jar by command java -jar javalinserver-1.0.0-jar-with-dependencies
+* Launching executable .jar file by command java -jar javalinserver-1.0.0-jar-with-dependencies
 ```
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-
-Give an example
+## Running the application (Linux service)
+A Linux service is a kind of process not associated with Terminal or GUI that runs in background to provide functionality to the users.
+Let's how to create a new service in Linux and linking our jar file
 ```
 
 ### And coding style tests
