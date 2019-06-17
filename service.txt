@@ -1,0 +1,14 @@
+[Unit]
+Description=My JAVALIN API running as service
+
+[Service]
+WorkingDirectory=/opt/production/server
+ExecStart=/opt/production/server/run.sh
+User=backendapps
+Type=simple
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target
