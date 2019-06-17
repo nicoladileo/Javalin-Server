@@ -30,8 +30,6 @@ A Linux service is a kind of process not associated with Terminal or GUI that ru
 Let's how to create a new service in Linux and linking our jar file
 ```
 
-### And coding style tests
-
 Explain what these tests test and why
 
 
