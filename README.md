@@ -4,7 +4,7 @@ Simple Javalin API running as service in Linux OS
 
 ## Getting Started
 
-These project is a simple backend for API written in Java using Maven and Javalin, a lightweight and simple web framework
+These project is a simple API written in Java using Maven and Javalin, a lightweight and simple web framework
 for Java and Kotlin
 
 ### Prerequisites
