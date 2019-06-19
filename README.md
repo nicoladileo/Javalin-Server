@@ -75,5 +75,5 @@ sudo systemctl stop javalin.service: stop the service
 
 ## Authors
 
-* *Nicola Dileo** - *Initial work* - [PurpleBooth](https://nicoladileo.github.io)
+* **Nicola Dileo** - [Github](https://nicoladileo.github.io)
 
