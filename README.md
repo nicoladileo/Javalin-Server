@@ -25,47 +25,55 @@ Once cloned the repo you can run it doing these steps:
 * Launching executable .jar file by command java -jar javalinserver-1.0.0-jar-with-dependencies
 ```
 
-## Running the application (Linux service)
+## Configuring the application (Linux service)
 A Linux service is a kind of process not associated with Terminal or GUI that runs in background to provide functionality to the users.
 Let's how to create a new service in Linux and linking our jar file
 ```
+First create a new group and a new user that will be able to run the service
+* sudo groupadd -r backendgroup
+* sudo useradd -r -s /bin/false -g backendgroup backendapps
 
-Explain what these tests test and why
+Then create a new service in /etc/systemd
+* sudo nano /etc/systemd/system/javalin.service
 
+The content of javalin.service will be the following:
+  [Unit]
+  Description=My JAVALIN API running as service
 
-Give an example
+  [Service]
+  WorkingDirectory=/opt/production/server
+  ExecStart=/opt/production/server/run.sh
+  User=backendapps
+  Type=simple
+  SuccessExitStatus=143S
+  TimeoutStopSec=10
+  Restart=on-failure
+  RestartSec=5
+  [Install]
+  WantedBy=multi-user.target
+  
+Copy the jar previously created in the right folder (in this case /opt/production/server) and give it the right permissions
+* sudo chown -R backendapps:backendgroup /opt/production/
+* sudo chmod +x /opt/production/server/run.sh
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+## Running the application 
+Now the service is ready to run:  first reload systemd so that it knows of the new application added.
+```
+sudo systemctl daemon-reload
+```
+Once reloaded start the service
+```
+sudo systemctl start javalin.service
+```
+Useful commands
+```
+sudo systemctl status javalin.service: check the status of the service
+sudo systemctl restart javalin.service: restart the service
+sudo systemctl stop javalin.service: stop the service
+```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* *Nicola Dileo** - *Initial work* - [PurpleBooth](https://nicoladileo.github.io)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
