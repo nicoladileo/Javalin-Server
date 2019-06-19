@@ -54,6 +54,7 @@ The content of javalin.service will be the following:
   
 Copy the jar previously created in the right folder (in this case /opt/production/server) and give it the right permissions
 * sudo chown -R backendapps:backendgroup /opt/production/
+Create a bash file that run the jar (java -jar javalinserver-1.0.0-jar-with-dependencies) and make it executable
 * sudo chmod +x /opt/production/server/run.sh
 ```
 
